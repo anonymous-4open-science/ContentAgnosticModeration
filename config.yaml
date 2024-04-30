@@ -1,0 +1,69 @@
+io:
+  scenario: 1
+  paths:
+    1:
+      init_matrix_path: data/tiny/init_matrix_topic3_v15.pkl
+      users_clicked_pool_path: data/tiny/users_clicked_pool_topic3_v15.pkl
+      users_dict_path: data/tiny/adjusted_users_dict_topic3.pkl
+      news_df_path: data/tiny/news_df_topic3.pkl
+      save_subdir: s1
+    2:
+      init_matrix_path: data/tiny/init_matrix_topic3_v23.pkl
+      users_clicked_pool_path: data/tiny/users_clicked_pool_topic3_v23.pkl
+      users_dict_path: data/tiny/adjusted_users_dict_topic3.pkl
+      news_df_path: data/tiny/news_df_topic3_2polar.pkl
+      save_subdir: s2
+    3:
+      init_matrix_path: data/tiny/init_matrix_topic3_v24.pkl
+      users_clicked_pool_path: data/tiny/users_clicked_pool_topic3_v24.pkl
+      users_dict_path: data/tiny/adjusted_users_dict_topic3.pkl
+      news_df_path: data/tiny/news_df_topic3_1polar.pkl
+      save_subdir: s3    
+    4:
+      init_matrix_path: data/tiny/init_matrix_topic3_v21.pkl
+      users_clicked_pool_path: data/tiny/users_clicked_pool_topic3_v21.pkl
+      users_dict_path: data/tiny/adjusted_users_dict_topic3_R.pkl
+      news_df_path: data/tiny/news_df_topic3.pkl
+      save_subdir: s4    
+
+
+user_model:
+  type: biased
+  update_vec: True
+  params:
+    biased:
+      c: 0.001
+      epsilon: 10e-5
+      preference_beta: 0.98
+    open:
+      c_start: 0.03
+    random:
+      c_start: 0.03
+
+
+rec_model:
+  type: 'oracle' # 'nmf' or 'pop' or 'oracle'
+  params:
+    pop: {}  
+    nmf:
+      rank: 7
+      n_iter: 100
+      tol: 1e-6
+    oracle:
+      w: 9
+      rep: False
+  update_mode: time  # 'time' or 'user'
+
+moderator:
+  type: sdtop # '', mip, rr, rd, rdtop, sd, sdtop
+  alpha: 1  # '1' or 'null'
+  sil_threshold: 0.4
+
+
+simulation:
+  total_time_steps: 100
+  time_limit: 600
+  seed: 0
+  k: 5
+  verbose: false
+  ratio_lb: 0.04  

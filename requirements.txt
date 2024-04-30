@@ -1,0 +1,11 @@
+matplotlib
+numpy
+omegaconf
+pandas
+PySCIPOpt
+scikit_learn
+scikit-fuzzy
+scipy    
+torch
+torchnmf
+tqdm

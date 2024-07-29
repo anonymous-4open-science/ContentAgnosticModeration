@@ -1,5 +1,5 @@
 # Content Agnostic Moderation for Stance Neutral Recommendation
-### currently under review for ACM RecSys 2024
+### under review
 
 ## setup
 * create a virtual environment with python version 3.10
